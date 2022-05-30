@@ -1,44 +1,96 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <p>
-      For a guide and recipes on how to configure / customize this project,<br>
-      check out the
-      <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
-    </p>
-    <h3>Installed CLI Plugins</h3>
-    <ul>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-typescript" target="_blank" rel="noopener">typescript</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint" target="_blank" rel="noopener">eslint</a></li>
-    </ul>
-    <h3>Essential Links</h3>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank" rel="noopener">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank" rel="noopener">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank" rel="noopener">Twitter</a></li>
-      <li><a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a></li>
-    </ul>
-    <h3>Ecosystem</h3>
-    <ul>
-      <li><a href="https://router.vuejs.org" target="_blank" rel="noopener">vue-router</a></li>
-      <li><a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a></li>
-      <li><a href="https://github.com/vuejs/vue-devtools#vue-devtools" target="_blank" rel="noopener">vue-devtools</a></li>
-      <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
-    </ul>
+    <div>
+        <button v-for="(item,index) in list" :key="index" @click="selectFun(index)">{{item}}</button>
+    </div>
+    <h1>{{selected}}</h1>
+    <div><button @click="overAction">选择完毕</button></div>
+    <div>{{overText}}</div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-
-export default defineComponent({
+import {
+  reactive,
+  toRefs,
+  ref,
+  onBeforeMount,
+  onMounted,
+  onBeforeUpdate,
+  onUpdated,
+  onRenderTracked,
+  onRenderTriggered,
+watch
+  } from 'vue';
+interface DataProps{
+  list:string[];
+  selected: string;
+  selectFun: (index:number) => void;
+}
+export default {
   name: 'HelloWorld',
   props: {
     msg: String,
   },
-});
+  setup() {
+    console.log('1-开始创建组件-------setup()');
+    const data : DataProps = reactive({
+      list:['a','b','c'],
+      selected:"",
+      selectFun: (index:number) => {
+      data.selected = data.list[index];
+    }
+    });
+
+    onBeforeMount(() => {
+        console.log('2-组件挂载到页面之前执行-------onBeforeMount');
+    });
+
+    onMounted(() => {
+        console.log('3-组件挂载到页面之后执行-------onMounted');
+    });
+
+    onBeforeUpdate(() => {
+        console.log('4-组件更新之前执行-------onBeforeUpdate');
+    });
+
+    onUpdated(() => {
+        console.log('5-组件更新之后执行-------onUpdated');
+    });
+
+    // onRenderTracked((event) => {
+    //   console.log("状态跟踪钩子函数------------------>");
+    //   console.log(event);
+    // })
+
+    onRenderTriggered((event) => {
+      console.log("状态跟踪钩子函数------------------>");
+      console.log(event);
+    })
+
+    const refData = toRefs(data);
+    const overText = ref('aaa');
+    const overAction = () => {
+      overText.value = "选择完毕|" + overText.value
+    }
+    watch([overText,()=>data.selected],(newValue,oldValue) => {
+      console.log(`new----->${newValue}`);
+      console.log(`old----->${oldValue}`);
+      document.title = newValue[0]
+    })
+  
+    return {
+      ...refData,
+      overText,
+      overAction
+    }
+  },
+
+  // beforeCreate() {
+  //   console.log('1.1-开始创建组件-------beforeCreate()'); //vue3中的生命周期钩子函数会比vue2中对应的钩子早一步执行
+  // }
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
