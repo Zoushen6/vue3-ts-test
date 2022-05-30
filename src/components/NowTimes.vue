@@ -7,10 +7,14 @@
 <script lang="ts">
 import { defineComponent,ref } from 'vue';
 import {nowTime,getNowTime} from '../hooks/useNowTimes';
+import useUrlAxios from '../hooks/useUrlAxios';
 
 export default defineComponent({
     name: 'NowTimes',
     setup() {
+        const res= useUrlAxios('/api/data')
+        console.log(res);
+        
         return {
             nowTime,
             getNowTime

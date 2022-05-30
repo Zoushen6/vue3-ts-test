@@ -19,7 +19,7 @@ import {
   onMounted,
   onBeforeUpdate,
   onUpdated,
-  onRenderTracked,
+  // onRenderTracked,
   onRenderTriggered,
 watch
   } from 'vue';
@@ -77,7 +77,7 @@ export default {
     watch([overText,()=>data.selected],(newValue,oldValue) => {
       console.log(`new----->${newValue}`);
       console.log(`old----->${oldValue}`);
-      document.title = newValue[0]
+      // document.title = newValue[0]
     })
   
     return {
