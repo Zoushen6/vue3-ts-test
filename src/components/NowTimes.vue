@@ -2,21 +2,26 @@
   <h1>时间显示模块</h1>
   <div>{{nowTime}}</div>
   <div><button @click="getNowTime">显示时间</button></div>
+
+  <h1 class="animate__animated animate__backInDown">result: {{result}}</h1>
 </template>
 
 <script lang="ts">
-import { defineComponent,ref } from 'vue';
+import { defineComponent,onMounted,onUpdated,onBeforeUpdate,ref } from 'vue';
 import {nowTime,getNowTime} from '../hooks/useNowTimes';
 import useUrlAxios from '../hooks/useUrlAxios';
 
 export default defineComponent({
     name: 'NowTimes',
     setup() {
-        const res= useUrlAxios('/api/data')
-        console.log(res);
+        const {result,loading,loaded} = useUrlAxios('/api/data')
         
+        onBeforeUpdate(() => {
+        console.log(result.value,loaded.value,loading.value);
+        })
         return {
             nowTime,
+            result,
             getNowTime
         }
     }
