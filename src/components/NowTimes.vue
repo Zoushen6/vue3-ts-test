@@ -10,18 +10,24 @@
 import { defineComponent,onMounted,onUpdated,onBeforeUpdate,ref } from 'vue';
 import {nowTime,getNowTime} from '../hooks/useNowTimes';
 import useUrlAxios from '../hooks/useUrlAxios';
+import _ from 'lodash'
 
 export default defineComponent({
     name: 'NowTimes',
     setup() {
-        const {result,loading,loaded} = useUrlAxios('/api/data')
+        // const {result,loading,loaded} = useUrlAxios('/api/data')
+
+        const a = [1,2,3]
+        const b = _.concat(a,[4,5,6])
+        console.log(b);
+        
         
         onBeforeUpdate(() => {
-        console.log(result.value,loaded.value,loading.value);
+        // console.log(result.value,loaded.value,loading.value);
         })
         return {
             nowTime,
-            result,
+            // result,
             getNowTime
         }
     }
