@@ -7,6 +7,7 @@
     <h1>{{selected}}</h1>
     <div><button @click="overAction">选择完毕</button></div>
     <div>{{overText}}</div>
+    <div><button @click="changeObj">改变对象键值</button> reactive: {{reactiveObj}}</div>
   </div>
 </template>
 
@@ -79,11 +80,19 @@ export default {
       console.log(`old----->${oldValue}`);
       // document.title = newValue[0]
     })
+
+    // let reactiveObj = {a:1}  这样是无法响应式的
+    let reactiveObj = reactive({a:1})
+    const changeObj = () => {
+      reactiveObj.a = 222
+    }
   
     return {
       ...refData,
       overText,
-      overAction
+      overAction,
+      reactiveObj,
+      changeObj
     }
   },
 
