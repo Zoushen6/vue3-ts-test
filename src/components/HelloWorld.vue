@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
+    <button @click="routeToTime">跳转到时间组件</button>
     <div>
         <button v-for="(item,index) in list" :key="index" @click="selectFun(index)">{{item}}</button>
     </div>
@@ -24,6 +24,8 @@ import {
   onRenderTriggered,
 watch
   } from 'vue';
+
+import { useRouter } from 'vue-router'
 interface DataProps{
   list:string[];
   selected: string;
@@ -86,13 +88,21 @@ export default {
     const changeObj = () => {
       reactiveObj.a = 222
     }
+
+
+    const router = useRouter();
+
+    const routeToTime = () => {
+        router.push("/nowTimes")
+    }
   
     return {
       ...refData,
       overText,
       overAction,
       reactiveObj,
-      changeObj
+      changeObj,
+      routeToTime
     }
   },
 

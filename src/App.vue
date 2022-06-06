@@ -1,9 +1,10 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
-  <div style="margin-top: 10%">
-    <NowTimes ></NowTimes>
-  </div>
+  <router-view></router-view>
+<!--  <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>-->
+<!--  <div style="margin-top: 10%">-->
+<!--    <NowTimes ></NowTimes>-->
+<!--  </div>-->
   
 </template>
 
