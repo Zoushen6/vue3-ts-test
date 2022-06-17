@@ -17,11 +17,19 @@ module.exports = {
                 pathRewrite: {
                     '^/api': '/'
                     //路径重写 原接口路径是http://localhost:8088/data 而我们是 http://localhost:8080/api/data
-                    //所以先target代替axios的baseurl(http://localhost:8080)为  http://localhost:8088
+                    //所以先target代替axios的baseurl(http://localhost:8080) 为->  http://localhost:8088
                     //之后再把/api去掉  变为http://localhost:8088/data
                 }
             },
         },
+    },
+
+    css: {
+        loaderOptions: {
+            sass: {
+                additionalData  : `@import "@/assets/scss/_variable.scss";` //引入全局变量
+            }
+        }
     },
 
     // configureWebpack: {
