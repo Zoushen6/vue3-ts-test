@@ -1,6 +1,6 @@
 <template>
-  <div class="top-bar text-left background-white">
-      <span class="title">My Demo</span>
+  <div class="top-bar text-left background-white pointer">
+      <router-link class="title" to="/" title="My Demo">My Demo</router-link>
   </div>
 </template>
 

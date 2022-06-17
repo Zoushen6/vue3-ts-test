@@ -8,8 +8,8 @@
 
 <script lang="ts">
 import { defineComponent,onMounted,onUpdated,onBeforeUpdate,ref } from 'vue';
-import {nowTime,getNowTime} from '../hooks/useNowTimes';
-import useUrlAxios from '../hooks/useUrlAxios';
+import {nowTime,getNowTime} from '@/hooks/useNowTimes';
+import useUrlAxios from '@/hooks/useUrlAxios';
 import _ from 'lodash'
 
 export default defineComponent({
