@@ -3,6 +3,8 @@ function resolve (dir) {
     return path.join(__dirname, '..', dir)
 }
 module.exports = {
+    //存储时不需要eslint
+    lintOnSave: false,
     //webpack配置
     devServer: {
         port: 8083, //指定启动端口 不与node服务端口冲突（node服务端口为8088）
