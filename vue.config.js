@@ -2,6 +2,12 @@ const path = require('path');
 function resolve (dir) {
     return path.join(__dirname, '..', dir)
 }
+
+const AutoImport = require('unplugin-auto-import/webpack')
+const Components = require('unplugin-vue-components/webpack')
+const { ElementPlusResolver } = require('unplugin-vue-components/resolvers')
+
+
 module.exports = {
     //存储时不需要eslint
     lintOnSave: false,
@@ -32,7 +38,17 @@ module.exports = {
         }
     },
 
-    // configureWebpack: {
+
+    configureWebpack: {
+        // element-plus自动导入插件
+        plugins: [
+            AutoImport({
+                resolvers: [ElementPlusResolver()],
+            }),
+            Components({
+                resolvers: [ElementPlusResolver()],
+            }),
+        ],
     //     plugins: [],
     //     resolve: {
     //         // 设置别名
@@ -50,5 +66,5 @@ module.exports = {
     //             '@directive': utils.resolve('src/directive'), // 这样配置后 @directive 可以指向 directive 目录
     //         }
     //     },
-    // },
+    },
 }

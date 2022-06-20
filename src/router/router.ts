@@ -4,6 +4,7 @@ import { createRouter, createWebHashHistory, createWebHistory, RouteRecordRaw } 
 import Index from '@/views/Index.vue'
 import HelloWorld from '@/components/HelloWorld.vue'    //
 import NowTimes from '@/components/NowTimes.vue'  //
+import TsTest from '@/views/TsTest/index.vue'
 
 /**
  * 定义路由模块
@@ -21,9 +22,14 @@ const routes: Array<RouteRecordRaw> = [
                 component: HelloWorld,
             },
             {
-                path: '/NowTimes',
+                path: '/nowTimes',
                 name: 'nowTimes',
                 component: NowTimes
+            },
+            {
+                path: '/tsTest',
+                name: 'tsTest',
+                component: TsTest
             }
         ]
     },

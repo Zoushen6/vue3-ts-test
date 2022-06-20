@@ -1,7 +1,7 @@
 <template>
   <h1>时间显示模块</h1>
   <div>{{nowTime}}</div>
-  <div><button @click="getNowTime">显示时间</button></div>
+  <div><el-button @click="getNowTime">显示时间</el-button></div>
 
   <h1 class="animate__animated animate__backInDown">result: {{result}}</h1>
 </template>

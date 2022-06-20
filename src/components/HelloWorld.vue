@@ -1,13 +1,14 @@
 <template>
   <div class="hello">
-    <button @click="routeToTime">跳转到时间组件</button>
+    <el-button @click="routeToTime">跳转到时间组件</el-button>
+    <el-button @click="routeToTs">跳转到TsTest</el-button>
     <div>
-        <button v-for="(item,index) in list" :key="index" @click="selectFun(index)">{{item}}</button>
+        <el-button v-for="(item,index) in list" :key="index" @click="selectFun(index)">{{item}}</el-button>
     </div>
     <h1>{{selected}}</h1>
-    <div><button @click="overAction">选择完毕</button></div>
+    <div><el-button @click="overAction">选择完毕</el-button></div>
     <div>{{overText}}</div>
-    <div><button @click="changeObj">改变对象键值</button> reactive: {{reactiveObj}}</div>
+    <div><el-button @click="changeObj">改变对象键值</el-button> reactive: {{reactiveObj}}</div>
   </div>
 </template>
 
@@ -95,14 +96,19 @@ export default {
     const routeToTime = () => {
         router.push("/nowTimes")
     }
-  
+
+    const routeToTs = () => {
+        router.push("/tsTest")
+    }
+
     return {
       ...refData,
       overText,
       overAction,
       reactiveObj,
       changeObj,
-      routeToTime
+      routeToTime,
+      routeToTs
     }
   },
 
