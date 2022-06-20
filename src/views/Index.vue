@@ -1,9 +1,13 @@
 <template>
   <div>
     <top-bar></top-bar>
-    <div class="content">
-      <router-view/>
-    </div>
+      <div class="content">
+        <router-view v-slot="{ Component }">
+          <transition name="fade-transform" mode="out-in">
+            <component :is="Component" />
+          </transition>
+        </router-view>
+      </div>
   </div>
 </template>
 

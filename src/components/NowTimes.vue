@@ -1,9 +1,11 @@
 <template>
-  <h1>时间显示模块</h1>
-  <div>{{nowTime}}</div>
-  <div><el-button @click="getNowTime">显示时间</el-button></div>
+  <div>
+    <h1>时间显示模块</h1>
+    <div>{{nowTime}}</div>
+    <div><el-button @click="getNowTime">显示时间</el-button></div>
 
-  <h1 class="animate__animated animate__backInDown">result: {{result}}</h1>
+    <h1 class="animate__animated animate__backInDown">result: {{result}}</h1>
+  </div>
 </template>
 
 <script lang="ts">
@@ -16,18 +18,19 @@ export default defineComponent({
     name: 'NowTimes',
     setup() {
         // const {result,loading,loaded} = useUrlAxios('/api/data')
+        const result = ref(1)
 
         const a = [1,2,3]
         const b = _.concat(a,[4,5,6])
         console.log(b);
+
         
-        
-        onBeforeUpdate(() => {
-        // console.log(result.value,loaded.value,loading.value);
-        })
+        // onBeforeUpdate(() => {
+        // // console.log(result.value,loaded.value,loading.value);
+        // })
         return {
             nowTime,
-            // result,
+            result,
             getNowTime
         }
     }
