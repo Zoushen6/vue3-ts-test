@@ -9,6 +9,118 @@
     <div><el-button @click="overAction">选择完毕</el-button></div>
     <div>{{overText}}</div>
     <div><el-button @click="changeObj">改变对象键值</el-button> reactive: {{reactiveObj}}</div>
+
+
+    <el-button @click="routeToTime">跳转到时间组件</el-button>
+    <el-button @click="routeToTs">跳转到TsTest</el-button>
+    <div>
+        <el-button v-for="(item,index) in list" :key="index" @click="selectFun(index)">{{item}}</el-button>
+    </div>
+    <h1>{{selected}}</h1>
+    <div><el-button @click="overAction">选择完毕</el-button></div>
+    <div>{{overText}}</div>
+    <div><el-button @click="changeObj">改变对象键值</el-button> reactive: {{reactiveObj}}</div>
+
+
+    <el-button @click="routeToTime">跳转到时间组件</el-button>
+    <el-button @click="routeToTs">跳转到TsTest</el-button>
+    <div>
+        <el-button v-for="(item,index) in list" :key="index" @click="selectFun(index)">{{item}}</el-button>
+    </div>
+    <h1>{{selected}}</h1>
+    <div><el-button @click="overAction">选择完毕</el-button></div>
+    <div>{{overText}}</div>
+    <div><el-button @click="changeObj">改变对象键值</el-button> reactive: {{reactiveObj}}</div>
+
+
+    <el-button @click="routeToTime">跳转到时间组件</el-button>
+    <el-button @click="routeToTs">跳转到TsTest</el-button>
+    <div>
+        <el-button v-for="(item,index) in list" :key="index" @click="selectFun(index)">{{item}}</el-button>
+    </div>
+    <h1>{{selected}}</h1>
+    <div><el-button @click="overAction">选择完毕</el-button></div>
+    <div>{{overText}}</div>
+    <div><el-button @click="changeObj">改变对象键值</el-button> reactive: {{reactiveObj}}</div>
+
+
+    <el-button @click="routeToTime">跳转到时间组件</el-button>
+    <el-button @click="routeToTs">跳转到TsTest</el-button>
+    <div>
+        <el-button v-for="(item,index) in list" :key="index" @click="selectFun(index)">{{item}}</el-button>
+    </div>
+    <h1>{{selected}}</h1>
+    <div><el-button @click="overAction">选择完毕</el-button></div>
+    <div>{{overText}}</div>
+    <div><el-button @click="changeObj">改变对象键值</el-button> reactive: {{reactiveObj}}</div>
+
+
+    <el-button @click="routeToTime">跳转到时间组件</el-button>
+    <el-button @click="routeToTs">跳转到TsTest</el-button>
+    <div>
+        <el-button v-for="(item,index) in list" :key="index" @click="selectFun(index)">{{item}}</el-button>
+    </div>
+    <h1>{{selected}}</h1>
+    <div><el-button @click="overAction">选择完毕</el-button></div>
+    <div>{{overText}}</div>
+    <div><el-button @click="changeObj">改变对象键值</el-button> reactive: {{reactiveObj}}</div>
+
+
+    <el-button @click="routeToTime">跳转到时间组件</el-button>
+    <el-button @click="routeToTs">跳转到TsTest</el-button>
+    <div>
+        <el-button v-for="(item,index) in list" :key="index" @click="selectFun(index)">{{item}}</el-button>
+    </div>
+    <h1>{{selected}}</h1>
+    <div><el-button @click="overAction">选择完毕</el-button></div>
+    <div>{{overText}}</div>
+    <div><el-button @click="changeObj">改变对象键值</el-button> reactive: {{reactiveObj}}</div>
+
+
+    <el-button @click="routeToTime">跳转到时间组件</el-button>
+    <el-button @click="routeToTs">跳转到TsTest</el-button>
+    <div>
+        <el-button v-for="(item,index) in list" :key="index" @click="selectFun(index)">{{item}}</el-button>
+    </div>
+    <h1>{{selected}}</h1>
+    <div><el-button @click="overAction">选择完毕</el-button></div>
+    <div>{{overText}}</div>
+    <div><el-button @click="changeObj">改变对象键值</el-button> reactive: {{reactiveObj}}</div>
+
+
+    <el-button @click="routeToTime">跳转到时间组件</el-button>
+    <el-button @click="routeToTs">跳转到TsTest</el-button>
+    <div>
+        <el-button v-for="(item,index) in list" :key="index" @click="selectFun(index)">{{item}}</el-button>
+    </div>
+    <h1>{{selected}}</h1>
+    <div><el-button @click="overAction">选择完毕</el-button></div>
+    <div>{{overText}}</div>
+    <div><el-button @click="changeObj">改变对象键值</el-button> reactive: {{reactiveObj}}</div>
+
+
+    <el-button @click="routeToTime">跳转到时间组件</el-button>
+    <el-button @click="routeToTs">跳转到TsTest</el-button>
+    <div>
+        <el-button v-for="(item,index) in list" :key="index" @click="selectFun(index)">{{item}}</el-button>
+    </div>
+    <h1>{{selected}}</h1>
+    <div><el-button @click="overAction">选择完毕</el-button></div>
+    <div>{{overText}}</div>
+    <div><el-button @click="changeObj">改变对象键值</el-button> reactive: {{reactiveObj}}</div>
+
+
+    <el-button @click="routeToTime">跳转到时间组件</el-button>
+    <el-button @click="routeToTs">跳转到TsTest</el-button>
+    <div>
+        <el-button v-for="(item,index) in list" :key="index" @click="selectFun(index)">{{item}}</el-button>
+    </div>
+    <h1>{{selected}}</h1>
+    <div><el-button @click="overAction">选择完毕</el-button></div>
+    <div>{{overText}}</div>
+    <div><el-button @click="changeObj">改变对象键值</el-button> reactive: {{reactiveObj}}</div>
+
+
   </div>
 </template>
 

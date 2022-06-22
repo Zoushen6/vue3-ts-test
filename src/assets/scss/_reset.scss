@@ -14,6 +14,5 @@ body {
 input, button, textarea {
     font: #{$font-size-base}/#{$line-height-base} $fontF-yahei;
 }
-
-html,body,#app { height: 100%; }
-
+//抖动
+html,body,#app { height: 100%; overflow: auto}

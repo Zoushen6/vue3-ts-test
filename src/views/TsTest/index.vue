@@ -32,17 +32,16 @@
 <script lang="ts">
 import {reactive} from 'vue'
 import _ from "lodash"
-
+type Person = {
+  name: string
+  age: number
+  introduce?: string
+  sayHi(): void
+}
 export default {
   name: "index",
 
   setup() {
-    type Person = {
-      name: string
-      age: number
-      introduce?: string
-      sayHi(): void
-    }
     let person:Person = reactive({
       name: 'zoushen',
       age: 22,

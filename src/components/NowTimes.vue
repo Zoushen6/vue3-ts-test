@@ -17,8 +17,8 @@ import _ from 'lodash'
 export default defineComponent({
     name: 'NowTimes',
     setup() {
-        // const {result,loading,loaded} = useUrlAxios('/api/search',{keywords:'海阔天空'})
-        const result = ref(1)
+        const {result,loading,loaded} = useUrlAxios('/search',{keywords:'海阔天空'})
+        // const result = ref(1)
         const a = [1,2,3]
         const b = _.concat(a,[4,5,6])
         console.log(b);

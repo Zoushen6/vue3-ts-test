@@ -1,12 +1,40 @@
 <template>
-  <div class="top-bar text-left background-white pointer">
+  <div class="top-bar background-white">
+    <div class="content">
       <router-link class="title" to="/" title="My Demo">My Demo</router-link>
+      <div class="login pointer" @click="showLogin">登录</div>
+    </div>
+    <!--    登录弹窗-->
+    <login-dialog :dialogFormVisible="dialogFormVisible" @close="dialogClose"></login-dialog>
+    <!--    /登录弹窗-->
   </div>
 </template>
 
 <script lang="ts">
+import {onMounted, ref, toRef} from "vue"
+import LoginDialog from "@/views/LoginDialog.vue"
 export default {
-  name: "TopBar"
+  name: "TopBar",
+
+  components: {LoginDialog},
+
+  setup() {
+
+    let dialogFormVisible = ref(false)
+
+    const showLogin = () => {
+      dialogFormVisible.value = true
+    }
+
+    const dialogClose = () => {
+      dialogFormVisible.value = false
+    }
+    return {
+      showLogin,
+      dialogFormVisible,
+      dialogClose
+    }
+  }
 }
 </script>
 
@@ -21,9 +49,22 @@ export default {
   left: 0;
   z-index: 4;
   line-height: 48px;
-  .title {
-    margin-left: 40px;
-    color: $theme-color;
+  .content {
+    width: 60%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    .title {
+      color: $theme-color;
+    }
+
+    .login {
+      color: $font-color-base;
+      &:hover {
+        text-decoration: underline;
+        color: #787878;
+      }
+    }
   }
 }
 

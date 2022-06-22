@@ -3,7 +3,7 @@ import {
  } from 'vue'
 import App from './App.vue'
 import router from '@/router/router'
-
+import store from './store'
 
 import 'animate.css/animate.min.css' //
 
@@ -15,4 +15,4 @@ import '@/assets/scss/style.scss';
 
 
 
-createApp(App).use(router).mount('#app')
+createApp(App).use(router).use(store).mount('#app')

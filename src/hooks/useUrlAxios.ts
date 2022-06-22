@@ -1,5 +1,6 @@
 import { ref } from "vue";
 import axios from 'axios'
+import http from '@/utils/promise'
 
 function useUrlAxios(url:string,params:object) {
     const result = ref(null); 
@@ -7,7 +8,7 @@ function useUrlAxios(url:string,params:object) {
     const loaded = ref(false);
     const error = ref(null)
 
-    axios.get(url,{params}).then(res => {
+    http.get(url,{params}).then(res => {
         loading.value = false;
         loaded.value = true;
         console.log(res.data.name);
