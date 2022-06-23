@@ -6,7 +6,7 @@ function resolve (dir) {
 const AutoImport = require('unplugin-auto-import/webpack')
 const Components = require('unplugin-vue-components/webpack')
 const { ElementPlusResolver } = require('unplugin-vue-components/resolvers')
-
+console.log("当前环境:" + process.env.NODE_ENV)
 
 module.exports = {
     //存储时不需要eslint
