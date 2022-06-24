@@ -15,7 +15,7 @@
         </div>
         <div class="right" v-loading="loading">
           <div style="font-size: 18px;font-weight: 500;color: #333333" class="text-center">{{msg}}</div>
-          <img  alt=""  id="qrImg" style="width:200px;height:200px" />
+          <img  alt=""  id="qrImg" style="width:200px;height:200px;margin-left: 50%;transform: translatex(-50%);" />
         </div>
       </div>
 
@@ -40,12 +40,10 @@ export default {
     }
   },
   setup(props:any,context:any) {
-
     type Form = {
       account: string,
       password: string,
     }
-    console.log(props)
 
     const dialogFormVisible = ref(props['dialogFormVisible'])
 
@@ -83,29 +81,19 @@ export default {
 
     const qrCheck = (qrKey) => {
       interval = setInterval(() => {
-        console.log(interval)
-
         loginQrCheck(qrKey).then(res => {
-          console.log(res)
-
-          if(res.data.code === 800 || res.data.code === 803) {
+          //二维码已过期
+          if(res.data.code === 800){}
+          if(res.data.code === 803) {
             clearInterval(interval)
             console.log(interval + '800/803')
             localStorage.setItem('cookie',res.data.cookie)
             store.commit('setCookie',res.data.cookie)
-            console.log(res)
             loading.value = true
             msg.value = '授权登录成功，正在获取用户信息'
-            getStatus(res.data.cookie).then(res => {
-              // console.log(res.data.account)
-              // console.log(res.data.profile)
-              if(res && res.data.data.code === 200) {
-                store.commit('setAvatar',res.data.data.profile.avatarUrl)
-                store.commit('setNickname',res.data.data.profile.nickname)
-                store.commit('setIsLogin',true)
-              }
-            }).finally(() => {
+            store.dispatch('getUserInfo').finally(() => {
               loading.value = false
+              context.emit('close')
             })
           }
         })

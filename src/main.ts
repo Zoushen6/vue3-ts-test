@@ -8,6 +8,7 @@ import store from './store'
 import 'animate.css/animate.min.css' //
 
 import './permission'
+import './menu'
 
 /************CSS**************/
 import '@/assets/scss/style.scss';

@@ -1,11 +1,13 @@
 import { createStore } from 'vuex'
+import {getStatus} from '@/api/login'
 
 export default createStore({
     state: {
-        nickname:'zoushen',
+        nickname:'',
         avatarUrlL: '',
         isLogin: false,
         cookie: null,
+        activeIndex: ''
     },
     mutations: {
         //设定用户cookie
@@ -32,8 +34,21 @@ export default createStore({
             state.isLogin = false,
             state.cookie = null
         },
+
+        setActiveIndex(state,data) {
+            state.activeIndex = data
+        }
     },
     actions: {
+        getUserInfo({commit}) {
+            return getStatus().then(res => {
+                if(res && res.data.data.code === 200) {
+                    commit('setAvatar',res.data.data.profile.avatarUrl)
+                    commit('setNickname',res.data.data.profile.nickname)
+                    commit('setIsLogin',true)
+                }
+            })
+        }
     },
     modules: {
     }

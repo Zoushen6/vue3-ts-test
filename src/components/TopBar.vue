@@ -1,14 +1,20 @@
 <template>
   <div class="top-bar background-white">
     <div class="content">
-      <router-link class="title" to="/" title="My Demo">My Demo</router-link>
-      <div class="info">
-        <div>{{nickname}}</div>
-        <img alt=""  id="avatar" style="width:59px;height:59px" />
+      <div class="flex">
+        <router-link class="title" to="/" title="My Demo">My Demo</router-link>
+        <Menu></Menu>
       </div>
-      <div class="login pointer" @click="showLogin" v-show="!isLogin" >登录</div>
-      <div class="login pointer" @click="logOut" v-show="isLogin">退出登录</div>
-
+      <div class="right-info flex">
+        <div class="info" v-show="isLogin">
+          <span>{{nickname}}</span>
+          <img alt=""  id="avatar" style="width:36px;height:36px" />
+        </div>
+        <div class="">
+          <div class="login pointer" @click="showLogin" v-show="!isLogin" >登录</div>
+          <div class="login pointer" @click="logOut" v-show="isLogin">退出登录</div>
+        </div>
+      </div>
     </div>
     <!--    登录弹窗-->
     <login-dialog v-if="dialogFormVisible" :dialogFormVisible="dialogFormVisible" @close="dialogClose"></login-dialog>
@@ -21,10 +27,11 @@ import {onMounted, ref, toRef,computed} from "vue"
 import LoginDialog from "@/views/LoginDialog.vue"
 import { useStore } from "vuex";
 import store from "@/store"
+import Menu from "@/components/Menu.vue"
 export default {
   name: "TopBar",
 
-  components: {LoginDialog},
+  components: {LoginDialog,Menu},
 
   setup() {
 
@@ -33,10 +40,12 @@ export default {
     let isLogin = computed(() => store.state.isLogin);
     let nickname = computed(() => store.state.nickname);
     let avatarUrlL = computed(() => store.state.avatarUrlL);
-    let queryList:any = document.querySelector('#avatar')
-    if(queryList) {
-      queryList.src = avatarUrlL
-    }
+    onMounted(() => {
+      let queryList:any = document.querySelector('#avatar')
+      if(queryList) {
+        queryList.src = avatarUrlL.value
+      }
+    })
 
     let dialogFormVisible = ref(false)
 
@@ -45,10 +54,7 @@ export default {
     }
     const logOut = () => {
       localStorage.clear()
-      console.log(store.state)
       store.commit('removeUser')
-      console.log(store.state)
-
     }
 
     const dialogClose = () => {
@@ -70,14 +76,14 @@ export default {
 <style scoped lang="scss">
 
 .top-bar {
-  height: 58px;
+  height: 60px;
   width: 100%;
   border-bottom: 1px solid #e8e9e8;
   position: fixed;
   top: 0;
   left: 0;
   z-index: 4;
-  line-height: 58px;
+  line-height: 60px;
   background-color: $theme-color2;
   .content {
     width: 60%;
@@ -90,8 +96,12 @@ export default {
     }
 
     .info {
-      display: flex;
       color: $font-color-white;
+      img {
+        display: inline-block;
+        vertical-align: middle;
+        border-radius: 18px;
+      }
     }
 
     .login {

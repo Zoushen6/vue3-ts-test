@@ -1,0 +1,16 @@
+import axios from "./index"
+
+//轮播图
+// type :资源类型 默认为0（pc）
+// 0: pc
+// 1: android
+// 2: iphone
+// 3: ipad
+export const getBanner = () => {
+    return axios.request({
+        url: '/banner',
+        params: {
+        },
+        method: 'GET'
+    })
+}

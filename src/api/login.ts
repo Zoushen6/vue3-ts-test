@@ -19,45 +19,44 @@ import {AxiosPromise, AxiosRequestConfig} from 'axios'
 //     request?: any;
 // }
 
+//获取key
 export const loginGetKey = () => {
     return axios.request({
         url: '/login/qr/key',
         params: {
-            timestamp: new Date().getTime()
         },
         method: 'GET'
     })
 }
 
+//获取二维码img
 export const loginGetImg = (key:string) => {
     return axios.request({
         url: '/login/qr/create',
         params: {
             key:key,
             qrimg: true,
-            timestamp: new Date().getTime()
         },
         method: 'GET'
     })
 }
 
+//轮询检查登录状态
 export const loginQrCheck = (key:string) => {
     return axios.request({
         url: '/login/qr/check',
         params: {
             key:key,
-            timestamp: new Date().getTime()
         },
         method: 'GET'
     })
 }
 
-export const getStatus = (cookie:string) => {
+//获取用户信息
+export const getStatus = () => {
     return axios.request({
         url: '/login/status',
-        params: {
-            cookie:cookie,
-        },
+        params: {},
         method: 'GET'
     })
 }

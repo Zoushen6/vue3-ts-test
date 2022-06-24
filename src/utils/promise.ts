@@ -1,5 +1,6 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosPromise,AxiosResponse } from 'axios'; // 引入axios和定义在node_modules/axios/index.ts文件里的类型声明
 
+import store from '@/store'
 import config from "@/config"
 
 const { api: { devApiBaseUrl, proApiBaseUrl } } = config; //多层对象解构赋值
@@ -22,13 +23,16 @@ class HttpRequest { // 定义一个接口请求类，用于创建一个axios请�
         instance.interceptors.request.use((config: AxiosRequestConfig) => {
                 // 接口请求的所有配置，都在这个config对象中，他的类型是AxiosRequestConfig，你可以看到他有哪些字段
                 // 如果你要修改接口请求配置，需要修改 axios.defaults 上的字段值
+            if(store.state.cookie) {
+                config.params['cookie'] = store.state.cookie
+            }
             if (config&&config.url) {
                 if(config.url.indexOf('qr') > 0) {
-                    if(!config.params)
                     config.params['timestamp'] = Date.now()
                 }
-                return config
             }
+            return config
+
             },
             (error) => {
                 return Promise.reject(error)
