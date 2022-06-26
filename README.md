@@ -1,5 +1,12 @@
 # vue3-ts-test
 
+## node版本
+```
+v16.15.1
+
+cnpm i会报错
+```
+
 ## Project setup
 ```
 npm install
