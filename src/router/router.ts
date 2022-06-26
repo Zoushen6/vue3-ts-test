@@ -13,7 +13,7 @@ const routes: Array<RouteRecordRaw> = [
     {
         path: '/',
         name: 'index',
-        redirect: {name : 'tsTest'},
+        redirect: {name : 'home'},
         component: Index,
         children: [
             {

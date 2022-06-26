@@ -8,9 +8,9 @@
       <div class="right-info flex">
         <div class="info" v-show="isLogin">
           <span>{{nickname}}</span>
-          <img alt=""  id="avatar" style="width:36px;height:36px" />
+          <img alt=""  id="avatar" style="width:36px;height:36px" class="m-l-10 pointer" />
         </div>
-        <div class="">
+        <div class="m-l-15">
           <div class="login pointer" @click="showLogin" v-show="!isLogin" >登录</div>
           <div class="login pointer" @click="logOut" v-show="isLogin">退出登录</div>
         </div>
@@ -23,7 +23,7 @@
 </template>
 
 <script lang="ts">
-import {onMounted, ref, toRef,computed} from "vue"
+import {onMounted, ref, toRef, computed, watch} from "vue"
 import LoginDialog from "@/views/LoginDialog.vue"
 import { useStore } from "vuex";
 import store from "@/store"
@@ -40,11 +40,24 @@ export default {
     let isLogin = computed(() => store.state.isLogin);
     let nickname = computed(() => store.state.nickname);
     let avatarUrlL = computed(() => store.state.avatarUrlL);
-    onMounted(() => {
+
+    const setAvatar = (avatar) => {
       let queryList:any = document.querySelector('#avatar')
       if(queryList) {
-        queryList.src = avatarUrlL.value
+        queryList.src = avatar
       }
+    }
+
+    onMounted(() => {
+      console.log('mounted',avatarUrlL)
+      //刷新页面显示头像
+      setAvatar(avatarUrlL.value)
+    })
+
+    watch(avatarUrlL,(newVal,oldVal) => {
+      console.log('watch',newVal)
+      //登录后弹窗关闭显示头像
+      setAvatar(newVal)
     })
 
     let dialogFormVisible = ref(false)

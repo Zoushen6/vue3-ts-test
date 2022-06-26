@@ -13,6 +13,7 @@ module.exports = {
     lintOnSave: false,
     //webpack配置
     devServer: {
+        open: true,
         port: 8083, //指定启动端口 不与node服务端口冲突（node服务端口为8088）
         proxy: {
             '/api':
