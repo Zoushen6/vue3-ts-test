@@ -10,11 +10,11 @@
       </div>
       <!-- 放小圆点的盒子，里面的小圆点数量通过js动态添加 -->
       <div class="select" v-if="imgList.length">
-        <div class="dian" v-for="item in imgList" :key="item.imageUrl"></div>
+        <div class="dian" v-for="(item,idx) in imgList" :class="index === idx ? 'check' : ''" :key="idx" @click="handleSelect(idx)"></div>
       </div>
       <!-- 左右切换按钮 -->
-      <div class="bt left"><el-icon :size="40" :color="'#ffffff'"><ArrowLeft /></el-icon></div>
-      <div class="bt right"><el-icon :size="40" :color="'#ffffff'"><ArrowRight /></el-icon></div>
+      <div class="bt left" @click="handleLeft"><el-icon :size="40" :color="'#ffffff'"><ArrowLeft /></el-icon></div>
+      <div class="bt right" @click="handleRight"><el-icon :size="40" :color="'#ffffff'"><ArrowRight /></el-icon></div>
     </section>
 
   </div>
@@ -29,13 +29,13 @@ let bgImg = document.getElementsByClassName('bg') //背景元素
 let imgElement = document.getElementsByClassName('image') //轮播图元素
 let imgList:Array = reactive([]); //图片列表
 let imgUrl:string = ref('');//src绑定的url
-let index = 0;//轮播图起始位置
+let index = ref(0);//轮播图起始位置
 let interval = '' //定时器
 // 获取轮播图并处理数据
 getBanner().then(res => {
   // imgList.value = res.data.banners.map(item => item.imageUrl)
   imgList.push(...res.data.banners.map(item => item.imageUrl))
-  setImg(imgList[index])
+  setImg(imgList[index.value])
   imgElement[0].classList.add('blur-style')
   interval = setInterval(play,5000)
 })
@@ -46,22 +46,44 @@ const setImg = (url) => {
 }
 
 const play = () => {
-  index++;
-  if(index === imgList.length) {
-    index = 0
+  index.value++;
+  if(index.value === imgList.length) {
+    index.value = 0
   }
-  setImg(imgList[index])
-  console.log(index)
+  setImg(imgList[index.value])
+  console.log(index.value)
+}
+
+const handleSelect = (idx) => {
+  index.value = idx
+  setImg(imgList[idx])
+}
+
+const handleLeft = () => {
+  if(index.value!==0) {
+    index.value--;
+  }else {
+    index.value = imgList.length-1;
+  }
+  setImg(imgList[index.value])
+
+}
+
+const handleRight = () => {
+  if(index.value!==imgList.length-1) {
+    index.value++;
+  }else {
+    index.value = 0;
+  }
+  setImg(imgList[index.value])
 }
 
 const mouseEnter = () => {
-  console.log('clear')
   imgElement[0].classList.remove('blur-style')
   clearInterval(interval)
 }
 
 const mouseLeave = () => {
-  console.log('add')
   imgElement[0].classList.add('blur-style')
   interval = setInterval(play,5000)
 }
@@ -149,6 +171,9 @@ onBeforeUnmount(() => {
         &:hover {
           background-color: $theme-color;
         }
+      }
+      .check {
+        background-color: $theme-color;
       }
     }
 
