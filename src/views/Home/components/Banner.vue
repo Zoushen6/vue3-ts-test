@@ -1,5 +1,5 @@
 <template>
-  <div class="main">
+  <div class="main" @mouseenter="mouseEnter" @mouseleave="mouseLeave">
     <!-- 虚化背景-->
     <div class="bg"></div>
     <!-- 轮播图-->
@@ -9,8 +9,8 @@
         <img :src="imgUrl" class="image">
       </div>
       <!-- 放小圆点的盒子，里面的小圆点数量通过js动态添加 -->
-      <div class="select" >
-        <div class="dian" v-for="(item,index) in imgList.length" :key="index"></div>
+      <div class="select" v-if="imgList.length">
+        <div class="dian" v-for="item in imgList" :key="item.imageUrl"></div>
       </div>
       <!-- 左右切换按钮 -->
       <div class="bt left"><el-icon :size="40" :color="'#ffffff'"><ArrowLeft /></el-icon></div>
@@ -21,23 +21,29 @@
 </template>
 
 <script setup lang="ts">
-import {nextTick, onBeforeMount, onBeforeUnmount, onMounted, reactive, ref} from "vue"
+import { nextTick,onBeforeMount, onBeforeUnmount, onMounted, reactive, ref} from "vue"
 import {getBanner} from "@/api/api"
 
+//setup中直接获取dom节点，直接log是空值但是在getBanner().then()中可以获取到，不知道为啥
 let bgImg = document.getElementsByClassName('bg') //背景元素
 let imgElement = document.getElementsByClassName('image') //轮播图元素
-let imgList:Array = ref([]); //图片列表
+let imgList:Array = reactive([]); //图片列表
 let imgUrl:string = ref('');//src绑定的url
 let index = 0;//轮播图起始位置
 let interval = '' //定时器
 // 获取轮播图并处理数据
-function anner(){
-  getBanner().then(res => {
-    imgList.value = res.data.banners.map(item => item.imageUrl)
-    console.log(imgList.value)
-  })
+getBanner().then(res => {
+  // imgList.value = res.data.banners.map(item => item.imageUrl)
+  imgList.push(...res.data.banners.map(item => item.imageUrl))
+  setImg(imgList[index])
+  imgElement[0].classList.add('blur-style')
+  interval = setInterval(play,5000)
+})
+
+const setImg = (url) => {
+  imgUrl.value = url
+  bgImg[0].style.cssText = `background:url(${url})`
 }
-anner()
 
 const play = () => {
   index++;
@@ -45,24 +51,20 @@ const play = () => {
     index = 0
   }
   setImg(imgList[index])
+  console.log(index)
 }
 
-const setImg = (url) => {
-  imgUrl.value = url
-  bgImg[0].style.cssText = `background:url(${url})`
+const mouseEnter = () => {
+  console.log('clear')
+  imgElement[0].classList.remove('blur-style')
+  clearInterval(interval)
 }
 
-onBeforeMount(() => {
-
-})
-
-onMounted(() => {
-  console.log(imgList.value)
-  // setImg(imgList.value[index])
-  imgUrl.value = imgList.value[index]
-  // bgImg[0].style.cssText = `background:url(${url})`
+const mouseLeave = () => {
+  console.log('add')
   imgElement[0].classList.add('blur-style')
-})
+  interval = setInterval(play,5000)
+}
 
 onBeforeUnmount(() => {
   clearInterval(interval)
@@ -143,9 +145,9 @@ onBeforeUnmount(() => {
         border-radius: 50%;
         background-color: $font-color-white;
         transition: all 0.3s;
+        cursor: pointer;
         &:hover {
           background-color: $theme-color;
-          cursor: pointer;
         }
       }
     }
