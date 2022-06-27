@@ -85,7 +85,7 @@ export default {
 .test-obj {
   width: 500px;
   border: 1px solid pink;
-  //display: inline-block;
+  display: inline-block;
 }
 
 </style>

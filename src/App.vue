@@ -21,6 +21,7 @@ export default defineComponent({
       document.body.style.setProperty('--el-color-primary-light-9', '#ffffff');
       document.body.style.setProperty('--el-color-primary-light-5', '#c20c0c');
       document.body.style.setProperty('--el-color-primary-light-7', '#c20c0c');
+      document.body.style.setProperty('--el-menu-active-color', '#ffffff');
     })
   }
 });

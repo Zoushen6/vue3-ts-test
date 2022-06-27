@@ -16,11 +16,12 @@
         <div class="right" v-loading="loading">
           <div style="font-size: 18px;font-weight: 500;color: #333333" class="text-center">{{msg}}</div>
           <img  alt=""  id="qrImg" style="width:200px;height:200px;margin-left: 50%;transform: translatex(-50%);" />
+          <div style="opacity: 0.4" class="text-center">使用 <i style="color: #0c73c2">网易云音乐APP</i>  扫码登录</div>
         </div>
       </div>
 
         <div class="text-center">
-          <el-button round plain :disabled="dialogFormVisible">选择其他登录方式</el-button>
+          <el-button round plain :disabled="loading">选择其他登录方式</el-button>
         </div>
     </el-dialog>
   </div>
@@ -97,7 +98,7 @@ export default {
             })
           }
         })
-      },5000)
+      },3000)
 
     }
 

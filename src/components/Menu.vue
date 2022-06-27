@@ -4,7 +4,7 @@
         :default-active="activeIndex"
         class="el-menu-demo"
         mode="horizontal"
-        text-color="#fff"
+        text-color="#ccc"
         :ellipsis="false"
         background-color="transparent"
         @select="handleSelect"

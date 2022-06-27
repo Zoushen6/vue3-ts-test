@@ -24,6 +24,6 @@ export default {
 .content {
   text-align: center;
   color: $font-color-base;
-  margin-top: 61px;
+  margin-top: 60px;
 }
 </style>

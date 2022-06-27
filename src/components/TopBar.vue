@@ -6,13 +6,18 @@
         <Menu></Menu>
       </div>
       <div class="right-info flex">
-        <div class="info" v-show="isLogin">
-          <span>{{nickname}}</span>
-          <img alt=""  id="avatar" style="width:36px;height:36px" class="m-l-10 pointer" />
-        </div>
+        <el-popover popper-class="disable-popper-padding">
+          <template #reference>
+            <div class="info" v-show="isLogin">
+              <span>{{nickname}}</span>
+              <img alt=""  id="avatar" style="width:36px;height:36px" class="m-l-10 pointer" />
+            </div>
+          </template>
+          <el-button @click="logOut">退出登录</el-button>
+        </el-popover>
+
         <div class="m-l-15">
           <div class="login pointer" @click="showLogin" v-show="!isLogin" >登录</div>
-          <div class="login pointer" @click="logOut" v-show="isLogin">退出登录</div>
         </div>
       </div>
     </div>
@@ -49,7 +54,6 @@ export default {
     }
 
     onMounted(() => {
-      console.log('mounted',avatarUrlL)
       //刷新页面显示头像
       setAvatar(avatarUrlL.value)
     })
@@ -91,7 +95,6 @@ export default {
 .top-bar {
   height: 60px;
   width: 100%;
-  border-bottom: 1px solid #e8e9e8;
   position: fixed;
   top: 0;
   left: 0;

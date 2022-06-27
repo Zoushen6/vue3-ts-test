@@ -1,7 +1,6 @@
 <template>
   <div class="hello">
-    home
-
+    <banner></banner>
   </div>
 </template>
 
@@ -12,11 +11,14 @@ import {
   ref,
   watch
   } from 'vue';
-
+import Banner from "./components/Banner.vue"
 import { useRouter } from 'vue-router'
 
 export default {
   name: 'Index',
+
+  components: {Banner},
+
   props: {
     msg: String,
   },

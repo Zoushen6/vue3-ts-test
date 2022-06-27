@@ -4,7 +4,7 @@ import store from '@/store'
 import config from "@/config"
 
 const { api: { devApiBaseUrl, proApiBaseUrl } } = config; //多层对象解构赋值
-console.log(devApiBaseUrl)
+// console.log(devApiBaseUrl)
 const apiBaseUrl = process.env.NODE_ENV === 'production' ? proApiBaseUrl : devApiBaseUrl;
 // process.env.NODE_ENV是vue服务内置的环境变量，有两个值，当本地开发时是development，当打包时是production
 
