@@ -1,5 +1,5 @@
 <template>
-  <div class="main" @mouseenter="mouseEnter" @mouseleave="mouseLeave">
+  <div class="main" @mouseenter="mouseEnter" @mouseleave="mouseLeave" v-loading="loading">
     <!-- 虚化背景-->
     <div class="bg"></div>
     <!-- 轮播图-->
@@ -31,13 +31,16 @@ let imgList:Array = reactive([]); //图片列表
 let imgUrl:string = ref('');//src绑定的url
 let index = ref(0);//轮播图起始位置
 let interval = '' //定时器
+let loading = ref(false)
 // 获取轮播图并处理数据
+loading.value = true
 getBanner().then(res => {
   // imgList.value = res.data.banners.map(item => item.imageUrl)
   imgList.push(...res.data.banners.map(item => item.imageUrl))
   setImg(imgList[index.value])
   imgElement[0].classList.add('blur-style')
   interval = setInterval(play,5000)
+  loading.value = false
 })
 
 const setImg = (url) => {
