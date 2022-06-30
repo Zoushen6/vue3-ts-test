@@ -14,7 +14,10 @@ router.beforeEach(async (to, from, next) => {
     }
     const hasCookie = store.state.cookie;
     if(hasCookie) {
-        await store.dispatch('getUserInfo')
+        await store.dispatch('getUserInfo').finally(() => {
+            next()
+        })
+    }else {
+        next()
     }
-    next()
 })

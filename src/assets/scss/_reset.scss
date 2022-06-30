@@ -15,4 +15,8 @@ input, button, textarea {
     font: #{$font-size-base}/#{$line-height-base} $fontF-yahei;
 }
 //抖动
-html,body,#app { height: 100%; overflow: auto}
+html,body,#app {
+    height: 100%;
+    overflow: auto;
+    //user-select:none;//双击选中元素
+}

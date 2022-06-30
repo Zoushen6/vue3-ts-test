@@ -1,12 +1,12 @@
 <template>
   <div class="main" @mouseenter="mouseEnter" @mouseleave="mouseLeave" v-loading="loading">
     <!-- 虚化背景-->
-    <div class="bg"></div>
+    <div class="bg" ref="bg"></div>
     <!-- 轮播图-->
     <section >
       <!-- 放图片的盒子 -->
       <div class="tupian">
-        <img :src="imgUrl" class="image">
+        <img :src="imgUrl" class="image" ref="image">
       </div>
       <!-- 放小圆点的盒子，里面的小圆点数量通过js动态添加 -->
       <div class="select" v-if="imgList.length">
@@ -21,16 +21,18 @@
 </template>
 
 <script setup lang="ts">
-import { nextTick,onBeforeMount, onBeforeUnmount, onMounted, reactive, ref} from "vue"
+import {defineComponent, onBeforeUnmount, onMounted, reactive, ref} from "vue"
 import {getBanner} from "@/api/api"
 
 //setup中直接获取dom节点，直接log是空值但是在getBanner().then()中可以获取到，不知道为啥
-let bgImg = document.getElementsByClassName('bg') //背景元素
-let imgElement = document.getElementsByClassName('image') //轮播图元素
-let imgList:Array = reactive([]); //图片列表
-let imgUrl:string = ref('');//src绑定的url
+// const bgImg = document.getElementsByClassName('bg')
+// const imgElement = document.getElementsByClassName('image')
+const bg = ref()//背景元素
+const image = ref()//轮播图元素
+let imgList:Array<string> = reactive([]); //图片列表
+let imgUrl = ref('');//src绑定的url
 let index = ref(0);//轮播图起始位置
-let interval = '' //定时器
+let interval:number //定时器
 let loading = ref(false)
 // 获取轮播图并处理数据
 loading.value = true
@@ -38,14 +40,14 @@ getBanner().then(res => {
   // imgList.value = res.data.banners.map(item => item.imageUrl)
   imgList.push(...res.data.banners.map(item => item.imageUrl))
   setImg(imgList[index.value])
-  imgElement[0].classList.add('blur-style')
+  image.value.classList.add('blur-style')
   interval = setInterval(play,5000)
   loading.value = false
 })
 
 const setImg = (url) => {
   imgUrl.value = url
-  bgImg[0].style.cssText = `background:url(${url})`
+  bg.value.style.cssText = `background:url(${url})`
 }
 
 const play = () => {
@@ -54,7 +56,6 @@ const play = () => {
     index.value = 0
   }
   setImg(imgList[index.value])
-  console.log(index.value)
 }
 
 const handleSelect = (idx) => {
@@ -82,12 +83,12 @@ const handleRight = () => {
 }
 
 const mouseEnter = () => {
-  imgElement[0].classList.remove('blur-style')
+  image.value.classList.remove('blur-style')
   clearInterval(interval)
 }
 
 const mouseLeave = () => {
-  imgElement[0].classList.add('blur-style')
+  image.value.classList.add('blur-style')
   interval = setInterval(play,5000)
 }
 

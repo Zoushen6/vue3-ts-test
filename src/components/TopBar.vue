@@ -29,7 +29,7 @@
 
 <script lang="ts">
 import {onMounted, ref, toRef, computed, watch} from "vue"
-import LoginDialog from "@/views/LoginDialog.vue"
+import LoginDialog from "@/components/LoginDialog.vue"
 import { useStore } from "vuex";
 import store from "@/store"
 import Menu from "@/components/Menu.vue"

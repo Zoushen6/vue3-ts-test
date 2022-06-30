@@ -14,3 +14,16 @@ export const getBanner = () => {
         method: 'GET'
     })
 }
+
+//热门推荐歌单
+// limit：取出数量 , 默认为 10 (不支持 offset)
+export const getRecommend = () => {
+    return axios.request({
+        url: '/personalized',
+        params: {
+            limit: 8
+        },
+        method: 'GET'
+    })
+}
+

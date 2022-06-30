@@ -1,10 +1,15 @@
 <template>
-  <div class="hello">
+  <div class="home">
     <banner></banner>
+    <div class="content">
+      <home-box :title="'热门推荐'" :classify="classify" :recommendList="recommendList"></home-box>
+      <home-box :title="'新碟上架'" ></home-box>
+      <home-box :title="'榜单'" ></home-box>
+    </div>
   </div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import {
   reactive,
   toRefs,
@@ -13,27 +18,46 @@ import {
   } from 'vue';
 import Banner from "./components/Banner.vue"
 import { useRouter } from 'vue-router'
+import HomeBox from "@/views/Home/components/HomeBox.vue"
+import {getRecommend} from "@/api/api";
 
-export default {
-  name: 'Index',
-
-  components: {Banner},
-
-  props: {
-    msg: String,
+let recommendList:Array = reactive([])
+const classify:Array = [
+  {
+    name: '华语',
+    value: '1'
+  },{
+    name: '流行',
+    value: '2'
+  },{
+    name: '摇滚',
+    value: '3'
+  },{
+    name: '民谣',
+    value: '4'
+  },{
+    name: '电子',
+    value: '5'
   },
-  setup() {
+]
+
+getRecommend().then(res => {
+  recommendList.push(...res.data.result)
+})
 
 
-    return {
-
-    }
-  },
-
-};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style scoped lang="scss">
+.home {
+  .content {
+    width: 980px;
+    margin: 0 auto;
+    padding: 20px 20px 0px 20px;
+    box-sizing: border-box;
+    background-color: $bg-color-white;
+  }
+}
 
 </style>

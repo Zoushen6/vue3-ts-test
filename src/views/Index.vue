@@ -25,5 +25,6 @@ export default {
   text-align: center;
   color: $font-color-base;
   margin-top: 60px;
+  background-color: $bg-color-grey;
 }
 </style>
