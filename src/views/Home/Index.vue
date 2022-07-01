@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <banner></banner>
+    <the-banner></the-banner>
     <div class="content">
       <home-box :title="'热门推荐'" :classify="classify" :recommendList="recommendList"></home-box>
       <home-box :title="'新碟上架'" ></home-box>
@@ -16,7 +16,7 @@ import {
   ref,
   watch
   } from 'vue';
-import Banner from "./components/Banner.vue"
+import TheBanner from "./components/TheBanner.vue"
 import { useRouter } from 'vue-router'
 import HomeBox from "@/views/Home/components/HomeBox.vue"
 import {getRecommend} from "@/api/api";

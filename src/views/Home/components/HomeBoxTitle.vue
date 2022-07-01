@@ -4,6 +4,7 @@
     <div class="classify m-l-20" v-if="classify">
       <div class="item" v-for="(item,index) in classify" :key="item.value"><span class="pointer">{{item.name}}</span></div>
     </div>
+    <slot></slot>
     <div class="more">更多</div>
   </div>
 </template>

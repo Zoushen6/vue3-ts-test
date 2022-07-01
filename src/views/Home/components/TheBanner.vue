@@ -21,7 +21,7 @@
 </template>
 
 <script setup lang="ts">
-import {defineComponent, onBeforeUnmount, onMounted, reactive, ref} from "vue"
+import { onBeforeUnmount, onMounted, reactive, ref} from "vue"
 import {getBanner} from "@/api/api"
 
 //setup中直接获取dom节点，直接log是空值但是在getBanner().then()中可以获取到，不知道为啥

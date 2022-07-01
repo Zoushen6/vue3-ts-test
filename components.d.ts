@@ -18,6 +18,7 @@ declare module '@vue/runtime-core' {
     LoginDialog: typeof import('./src/components/LoginDialog.vue')['default']
     Menu: typeof import('./src/components/Menu.vue')['default']
     NowTimes: typeof import('./src/components/NowTimes.vue')['default']
+    PlayList: typeof import('./src/components/PlayList.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     TopBar: typeof import('./src/components/TopBar.vue')['default']
