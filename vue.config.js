@@ -42,6 +42,7 @@ module.exports = {
 
 
     configureWebpack: {
+
         // element-plus自动导入插件
         plugins: [
             AutoImport({
@@ -51,22 +52,5 @@ module.exports = {
                 resolvers: [ElementPlusResolver()],
             }),
         ],
-    //     plugins: [],
-    //     resolve: {
-    //         // 设置别名
-    //         alias: {
-    //             '@': utils.resolve('src'), // 这样配置后 @ 可以指向 src 目录
-    //             '@assets': utils.resolve('src/assets'), // 这样配置后 @assets 可以指向 assets 目录
-    //             '@components': utils.resolve('src/components'), // 这样配置后 @components 可以指向 components 目录
-    //             '@config': utils.resolve('src/config'), // 这样配置后 @config 可以指向 config 目录
-    //             '@filter': utils.resolve('src/filter'), // 这样配置后 @filter 可以指向 filter 目录
-    //             '@mixins': utils.resolve('src/mixins'), // 这样配置后 @mixins 可以指向 mixins 目录
-    //             '@router': utils.resolve('src/router'), // 这样配置后 @router 可以指向 router 目录
-    //             '@store': utils.resolve('src/store'), // 这样配置后 @store 可以指向 store 目录
-    //             '@tools': utils.resolve('src/tools'), // 这样配置后 @tools 可以指向 tools 目录
-    //             '@views': utils.resolve('src/views'), // 这样配置后 @views 可以指向 views 目录
-    //             '@directive': utils.resolve('src/directive'), // 这样配置后 @directive 可以指向 directive 目录
-    //         }
-    //     },
     },
 }

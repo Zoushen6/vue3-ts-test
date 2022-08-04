@@ -5,6 +5,7 @@ import '@vue/runtime-core'
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    BaseSign: typeof import('./src/components/BaseSign/BaseSign.vue')['default']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElCol: typeof import('element-plus/es')['ElCol']
     ElDialog: typeof import('element-plus/es')['ElDialog']
@@ -21,6 +22,7 @@ declare module '@vue/runtime-core' {
     PlayList: typeof import('./src/components/PlayList.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    Sign: typeof import('./src/components/Sign.vue')['default']
     TopBar: typeof import('./src/components/TopBar.vue')['default']
   }
 }
