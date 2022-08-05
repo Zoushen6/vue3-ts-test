@@ -1,9 +1,12 @@
 <template>
-  <canvas ref="canvas"></canvas>
+  <div>
+    <canvas ref="canvas" disable-scroll='true'></canvas>
+  </div>
 </template>
 
 <script setup lang="ts">
 import {onMounted, ref} from "vue"
+import canvasSign  from './BaseSign'
 const props = defineProps({
   width: {
     type: Number,
@@ -11,7 +14,7 @@ const props = defineProps({
   },
   height: {
     type: Number,
-    default: 300
+    default: 800
   },
   lineWidth: {
     type: Number,
@@ -43,11 +46,20 @@ const props = defineProps({
   }
 })
 const canvas = ref()
+let cv
 
+const clear = () => {
+  cv.clear()
+}
+defineExpose({
+  clear
+})
 onMounted(() => {
   canvas.value.width = props.width
   canvas.value.height = props.height
-  console.log(canvas)
+  canvas.value.style.cssText = `background: ${props.bgColor}`
+  cv = new canvasSign(canvas.value);
+  console.log(cv)
 })
 </script>
 
