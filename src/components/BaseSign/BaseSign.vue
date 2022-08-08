@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import {onMounted, ref} from "vue"
+import {onMounted, ref, watch} from "vue"
 import canvasSign  from './BaseSign'
 const props = defineProps({
   width: {
@@ -26,7 +26,7 @@ const props = defineProps({
   },
   bgColor: {
     type: String,
-    default: ''
+    default: '#fff'
   },
   isCrop: {
     type: Boolean,
@@ -45,20 +45,45 @@ const props = defineProps({
     default: 1
   }
 })
+watch(() => props.bgColor,(val) => {
+  canvas.value.style.background = props.bgColor;
+  cv.setBackgroundColor(props.bgColor)
+})
 const canvas = ref()
 let cv
 
 const clear = () => {
   cv.clear()
 }
+const download = () => {
+  if(cv.hasDrawn) {
+    let img = document.createElement("a");
+    img.href = cv.getPNGImage();
+    img.download = "canvas-sign.png";
+    img.style.display = "none";
+    document.body.appendChild(img);
+    img.click();
+    document.body.removeChild(img);
+  }
+}
+const toBase64 = () => {
+  cv.generate({isCrop: props.isCrop}).then(res => {
+    console.log(res)
+  }).catch(e => {
+    console.warn(e)
+  })
+}
 defineExpose({
-  clear
+  clear,
+  download,
+  toBase64
 })
 onMounted(() => {
   canvas.value.width = props.width
   canvas.value.height = props.height
-  canvas.value.style.cssText = `background: ${props.bgColor}`
+  canvas.value.style.background = props.bgColor
   cv = new canvasSign(canvas.value);
+  cv.setBackgroundColor(props.bgColor)
   console.log(cv)
 })
 </script>

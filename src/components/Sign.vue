@@ -2,8 +2,10 @@
   <div class="content">
     <div>
       <el-button @click="reset">清除</el-button>
+      <el-button @click="download">下载</el-button>
+      <el-button @click="toBase64">base64</el-button>
     </div>
-    <base-sign class="baseSign" ref="baseSign" :bg-color="'pink'"></base-sign>
+    <base-sign class="baseSign" ref="baseSign" :bg-color="'#ffffff'"></base-sign>
   </div>
 </template>
 
@@ -16,11 +18,11 @@ const baseSign = ref()
 const reset = () => {
     baseSign.value.clear()
 }
-const restore = () => {
-
+const toBase64 = () => {
+  baseSign.value.toBase64()
 }
 const download = () => {
-
+  baseSign.value.download()
 }
 const colorChange = (e) => {
 
