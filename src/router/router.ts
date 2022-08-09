@@ -6,7 +6,7 @@ import Home from '@/views/Home/Index.vue'    //
 import NowTimes from '@/components/NowTimes.vue'  //
 import TsTest from '@/views/TsTest/index.vue'
 import Sign from '@/components/Sign.vue'
-
+import ListRender from '@/views/ListRender/index.vue'
 /**
  * 定义路由模块
  */
@@ -36,6 +36,11 @@ const routes: Array<RouteRecordRaw> = [
                 path: '/sign',
                 name: 'sign',
                 component: Sign
+            },
+            {
+                path: '/list',
+                name: 'list',
+                component: ListRender
             }
         ]
     },
