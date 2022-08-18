@@ -1,12 +1,12 @@
 
 import { createRouter, createWebHashHistory, createWebHistory, RouteRecordRaw } from 'vue-router'
 
-import Index from '@/views/Index.vue'
-import Home from '@/views/Home/Index.vue'    //
-import NowTimes from '@/components/NowTimes.vue'  //
-import TsTest from '@/views/TsTest/index.vue'
-import Sign from '@/components/Sign.vue'
-import ListRender from '@/views/ListRender/index.vue'
+const Index = () => import('@/views/Index.vue')
+const Home = () =>import('@/views/Home/Index.vue')  //
+const NowTimes = () =>import('@/components/NowTimes.vue')   //
+const TsTest = () =>import('@/views/TsTest/index.vue')
+const Sign = () =>import('@/components/Sign.vue')
+const ListRender = () =>import('@/views/ListRender/index.vue')
 /**
  * 定义路由模块
  */

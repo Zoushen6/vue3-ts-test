@@ -13,9 +13,7 @@ import './menu'
 /************CSS**************/
 import '@/assets/scss/style.scss';
 /************CSS**************/
-
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
-
 const app = createApp(App)
 //element图标
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {

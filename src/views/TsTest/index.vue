@@ -26,6 +26,30 @@
       <p>介绍：{{person2.introduce}}</p>
       <el-button @click="person2.sayHi()">sayHi</el-button>
     </div>
+    <div>------------------------------------------------</div>
+    <div>
+      <h3>person2</h3>
+      <p>姓名：{{person2.name}}</p>
+      <p>年龄：{{person2.age}}</p>
+      <p>介绍：{{person2.introduce}}</p>
+      <el-button @click="person2.sayHi()">sayHi</el-button>
+    </div>
+    <div>------------------------------------------------</div>
+    <div>
+      <h3>person2</h3>
+      <p>姓名：{{person2.name}}</p>
+      <p>年龄：{{person2.age}}</p>
+      <p>介绍：{{person2.introduce}}</p>
+      <el-button @click="person2.sayHi()">sayHi</el-button>
+    </div>
+    <div>------------------------------------------------</div>
+    <div>
+      <h3>person2</h3>
+      <p>姓名：{{person2.name}}</p>
+      <p>年龄：{{person2.age}}</p>
+      <p>介绍：{{person2.introduce}}</p>
+      <el-button @click="person2.sayHi()">sayHi</el-button>
+    </div>
   </div>
 </template>
 

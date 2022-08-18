@@ -11,6 +11,8 @@ console.log("当前环境:" + process.env.NODE_ENV)
 module.exports = {
     //存储时不需要eslint
     lintOnSave: false,
+    //不生产.map文件  .map文件可以在生产环境运行报错时准确输出哪一行那一列的错误
+    productionSourceMap: false,
     //webpack配置
     devServer: {
         open: true,
@@ -31,7 +33,6 @@ module.exports = {
             },
         },
     },
-
     css: {
         loaderOptions: {
             sass: {
@@ -39,10 +40,15 @@ module.exports = {
             }
         }
     },
-
-
+    chainWebpack: config => {
+        //打包体积分析
+        if (process.env.NODE_ENV === 'production'){
+            config
+                .plugin('webpack-bundle-analyzer')
+                .use(require('webpack-bundle-analyzer').BundleAnalyzerPlugin)
+        }
+    },
     configureWebpack: {
-
         // element-plus自动导入插件
         plugins: [
             AutoImport({

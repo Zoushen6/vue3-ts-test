@@ -7,7 +7,7 @@ export default createStore({
         avatarUrlL: '',
         isLogin: false,
         cookie: null,
-        activeIndex: ''
+        activeIndex: '',
     },
     mutations: {
         //设定用户cookie

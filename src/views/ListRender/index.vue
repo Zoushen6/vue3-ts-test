@@ -100,9 +100,9 @@ function removeTodo(e, i) {
   width: 200px;
 }
 .info {
-  padding: 20px;
+  /*padding: 20px;*/
   color: white;
-  background: #d88986;
+  /*background: #d88986;*/
 }
 .modal-enter-from {
   opacity: 0;
