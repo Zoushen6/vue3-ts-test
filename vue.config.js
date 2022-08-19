@@ -42,11 +42,11 @@ module.exports = {
     },
     chainWebpack: config => {
         //打包体积分析
-        if (process.env.NODE_ENV === 'production'){
-            config
-                .plugin('webpack-bundle-analyzer')
-                .use(require('webpack-bundle-analyzer').BundleAnalyzerPlugin)
-        }
+        // if (process.env.NODE_ENV === 'production'){
+        //     config
+        //         .plugin('webpack-bundle-analyzer')
+        //         .use(require('webpack-bundle-analyzer').BundleAnalyzerPlugin)
+        // }
     },
     configureWebpack: {
         // element-plus自动导入插件
