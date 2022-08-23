@@ -20,10 +20,8 @@
 <script setup lang="ts">
 import {computed, ref} from 'vue'
 import {useRouter} from "vue-router";
-import {useStore} from "vuex";
 
 const router = useRouter();
-const store = useStore();
 //vuex存储有点多余了
 // const activeIndex = computed(() => store.state.activeIndex);
 let activeIndex = computed(() => router.currentRoute.value.path);

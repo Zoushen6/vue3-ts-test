@@ -30,7 +30,8 @@
 <script lang="ts">
 import {reactive, ref, toRefs, onMounted, watch, onBeforeMount} from 'vue'
 import {loginGetKey,loginGetImg,loginQrCheck,getStatus} from '@/api/login'
-import store from "@/store"
+import { userStore } from "@/store/userStore"
+import { storeToRefs } from 'pinia';
 
 export default {
   name: 'LoginDialog',
@@ -80,6 +81,8 @@ export default {
     let interval:any = ref()
     let loading = ref(false)
 
+    const { userInfo,getUserInfo } = userStore()
+
     const qrCheck = (qrKey) => {
       interval = setInterval(() => {
         loginQrCheck(qrKey).then(res => {
@@ -89,10 +92,11 @@ export default {
             clearInterval(interval)
             console.log(interval + '800/803')
             localStorage.setItem('cookie',res.data.cookie)
-            store.commit('setCookie',res.data.cookie)
+            userInfo.cookie = res.data.cookie
+            // store.commit('setCookie',res.data.cookie)
             loading.value = true
             msg.value = '授权登录成功，正在获取用户信息'
-            store.dispatch('getUserInfo').finally(() => {
+            getUserInfo().finally(() => {
               loading.value = false
               context.emit('close')
             })

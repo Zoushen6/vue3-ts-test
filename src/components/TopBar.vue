@@ -8,8 +8,8 @@
       <div class="right-info flex">
         <el-popover popper-class="disable-popper-padding">
           <template #reference>
-            <div class="info" v-show="isLogin">
-              <span>{{nickname}}</span>
+            <div class="info" v-show="userInfo.isLogin">
+              <span>{{userInfo.nickname}}</span>
               <img alt=""  id="avatar" style="width:36px;height:36px" class="m-l-10 pointer" />
             </div>
           </template>
@@ -17,7 +17,7 @@
         </el-popover>
 
         <div class="m-l-15">
-          <div class="login pointer" @click="showLogin" v-show="!isLogin" >登录</div>
+          <div class="login pointer" @click="showLogin" v-show="!userInfo.isLogin" >登录</div>
         </div>
       </div>
     </div>
@@ -30,8 +30,8 @@
 <script lang="ts">
 import {onMounted, ref, toRef, computed, watch} from "vue"
 import LoginDialog from "@/components/LoginDialog.vue"
-import { useStore } from "vuex";
-import store from "@/store"
+import { userStore } from "@/store/userStore"
+import { storeToRefs } from 'pinia';
 import Menu from "@/components/Menu.vue"
 export default {
   name: "TopBar",
@@ -40,11 +40,7 @@ export default {
 
   setup() {
 
-    const store = useStore();
-
-    let isLogin = computed(() => store.state.isLogin);
-    let nickname = computed(() => store.state.nickname);
-    let avatarUrlL = computed(() => store.state.avatarUrlL);
+    const { userInfo,removeUser } = userStore()
 
     const setAvatar = (avatar) => {
       let queryList:any = document.querySelector('#avatar')
@@ -55,10 +51,10 @@ export default {
 
     onMounted(() => {
       //刷新页面显示头像
-      setAvatar(avatarUrlL.value)
+      setAvatar(userInfo.avatarUrlL)
     })
 
-    watch(avatarUrlL,(newVal,oldVal) => {
+    watch(() => userInfo.avatarUrlL,(newVal,oldVal) => {
       console.log('watch',newVal)
       //登录后弹窗关闭显示头像
       setAvatar(newVal)
@@ -71,7 +67,7 @@ export default {
     }
     const logOut = () => {
       localStorage.clear()
-      store.commit('removeUser')
+      removeUser()
     }
 
     const dialogClose = () => {
@@ -81,9 +77,7 @@ export default {
       showLogin,
       dialogFormVisible,
       dialogClose,
-      isLogin,
-      nickname,
-      avatarUrlL,
+      userInfo,
       logOut
     }
   }

@@ -3,9 +3,10 @@
     <top-bar></top-bar>
       <div class="content">
         <router-view v-slot="{ Component }">
-          <transition name="fade-transform" mode="out-in">
+<!--          transition动画导致banner组件中的mouseenter和mouseLeave方法在动画中触发，导致报错-->
+<!--          <transition name="fade-transform" mode="out-in">-->
             <component :is="Component" />
-          </transition>
+<!--          </transition>-->
         </router-view>
       </div>
   </div>

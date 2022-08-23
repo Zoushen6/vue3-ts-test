@@ -1,20 +1,21 @@
 import router from './router/router'
-import store from "./store";
 import {reactive, ref,toRaw} from 'vue'
+import {userStore} from "@/store/userStore";
 
 router.beforeEach(async (to, from, next) => {
     // console.log(to)
     // console.log(from)
-    if (!store.state.cookie) {
+    const { userInfo,getUserInfo } = userStore()
+    if (!userInfo.cookie) {
         const cookie = localStorage.getItem('cookie');
         if (cookie) {
             //保存数据到store
-            store.commit('setCookie',cookie);
+            userInfo.cookie=cookie;
         }
     }
-    const hasCookie = store.state.cookie;
+    const hasCookie = userInfo.cookie;
     if(hasCookie) {
-        await store.dispatch('getUserInfo').finally(() => {
+        await getUserInfo().finally(() => {
             next()
         })
     }else {

@@ -1,7 +1,7 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosPromise,AxiosResponse } from 'axios'; // 引入axios和定义在node_modules/axios/index.ts文件里的类型声明
 
-import store from '@/store'
 import config from "@/config"
+import {userStore} from "@/store/userStore";
 
 const { api: { devApiBaseUrl, proApiBaseUrl } } = config; //多层对象解构赋值
 // console.log(devApiBaseUrl)
@@ -21,10 +21,11 @@ class HttpRequest { // 定义一个接口请求类，用于创建一个axios请�
     private interceptors(instance: AxiosInstance, url?: string) { // 定义这个函数用于添加全局请求和响应拦截逻辑
         // 在这里添加请求和响应拦截
         instance.interceptors.request.use((config: AxiosRequestConfig) => {
-                // 接口请求的所有配置，都在这个config对象中，他的类型是AxiosRequestConfig，你可以看到他有哪些字段
-                // 如果你要修改接口请求配置，需要修改 axios.defaults 上的字段值
-            if(store.state.cookie) {
-                config.headers['Set-Cookie'] = store.state.cookie
+            // 接口请求的所有配置，都在这个config对象中，他的类型是AxiosRequestConfig，你可以看到他有哪些字段
+            // 如果你要修改接口请求配置，需要修改 axios.defaults 上的字段值
+            const { userInfo } = userStore()
+            if(userInfo.cookie) {
+            config.headers['Set-Cookie'] = userInfo.cookie
             }
             if (config&&config.url) {
                 if(config.url.indexOf('qr') > 0) {
