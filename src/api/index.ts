@@ -1,2 +1,2 @@
-import HttpRequest from '@/utils/promise'
+import HttpRequest from '@/utils/request'
 export default new HttpRequest()

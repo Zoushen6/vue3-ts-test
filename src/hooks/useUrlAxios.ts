@@ -1,6 +1,6 @@
 import { ref } from "vue";
 import axios from 'axios'
-import http from '@/utils/promise'
+import http from '@/utils/request'
 
 function useUrlAxios(url:string,params:object) {
     const result = ref(null); 
