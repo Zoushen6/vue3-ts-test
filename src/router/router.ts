@@ -7,6 +7,7 @@ const NowTimes = () =>import('@/components/NowTimes.vue')   //
 const TsTest = () =>import('@/views/TsTest/index.vue')
 const Sign = () =>import('@/components/Sign.vue')
 const ListRender = () =>import('@/views/ListRender/index.vue')
+const ExcelToJson = () =>import('@/views/ExcelToJson/index.vue')
 /**
  * 定义路由模块
  */
@@ -41,6 +42,11 @@ const routes: Array<RouteRecordRaw> = [
                 path: '/list',
                 name: 'list',
                 component: ListRender
+            },
+            {
+                path: '/excelToJson',
+                name: 'excelToJson',
+                component: ExcelToJson
             }
         ]
     },

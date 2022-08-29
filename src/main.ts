@@ -5,6 +5,7 @@ import App from './App.vue'
 import router from '@/router/router'
 import pinia  from '@/store/store'
 import 'animate.css/animate.min.css' //
+import 'element-plus/theme-chalk/el-message.css'
 import './permission'
 
 /************CSS**************/

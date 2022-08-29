@@ -11,6 +11,7 @@
     >
       <el-menu-item index="/home">发现音乐</el-menu-item>
       <el-menu-item index="/tsTest">排行榜</el-menu-item>
+      <el-menu-item index="/excelToJson">excel转json</el-menu-item>
 <!--      <el-menu-item index="3">Info</el-menu-item>-->
 <!--      <el-menu-item index="4">Orders</el-menu-item>-->
     </el-menu>
