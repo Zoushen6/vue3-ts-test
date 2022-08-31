@@ -10,7 +10,7 @@
           <template #reference>
             <div class="info" v-show="userInfo.isLogin">
               <span>{{userInfo.nickname}}</span>
-              <img alt=""  id="avatar" style="width:36px;height:36px" class="m-l-10 pointer" />
+              <img alt=""  id="avatar" style="width:36px;height:36px" class="m-l-10 pointer avatar" />
             </div>
           </template>
           <el-button @click="logOut">退出登录</el-button>
@@ -120,6 +120,14 @@ export default {
         text-decoration: underline;
         color: $font-color-auxiliary;
       }
+    }
+
+    .avatar:hover {
+      transform: rotate(666turn);
+      transition-delay: 1s;
+      transition-property: all;
+      transition-duration: 59s;
+      transition-timing-function: cubic-bezier(.34,0,.84,1);
     }
   }
 }
