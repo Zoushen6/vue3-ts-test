@@ -5,7 +5,8 @@
   "scripts": {
     "serve": "vue-cli-service serve --mode develop",
     "build": "vue-cli-service build ",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "git": "git add . & git cz & git push"
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.0.6",
