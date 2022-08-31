@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="home" v-ripple="{ duration: 300 }">
     <the-banner></the-banner>
     <div class="content">
       <home-box :title="'热门推荐'" :classify="classify" :recommendList="recommendList"></home-box>

@@ -7,6 +7,7 @@ import pinia  from '@/store/store'
 import 'animate.css/animate.min.css' //
 import 'element-plus/theme-chalk/el-message.css'
 import './permission'
+import ripple from '@/direct/ripple'
 
 /************CSS**************/
 import '@/assets/scss/style.scss';
@@ -17,6 +18,6 @@ const app = createApp(App)
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
     app.component(key, component)
 }
-app.use(router).use(pinia).mount('#app')
+app.use(router).use(pinia).use(ripple).mount('#app')
 
 
