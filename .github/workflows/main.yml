@@ -33,5 +33,5 @@ jobs:
       # Runs 
       - name: Run install and run serve
         run: |
-          npm i
-          npm run serve
+            npm i
+            npm run serve
