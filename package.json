@@ -2,6 +2,7 @@
   "name": "My-Demo",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://Zoushen6.github.io/vue3-ts-test",
   "scripts": {
     "serve": "vue-cli-service serve --mode develop",
     "build": "vue-cli-service build ",
