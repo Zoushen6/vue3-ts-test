@@ -12,8 +12,8 @@ jobs:
 
     - name: Build and Deploy
       uses: JamesIves/github-pages-deploy-action@v4
-      env:
+      with:
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-        BRANCH: gh-pages
-        FOLDER: dist
+        branch: gh-pages
+        folder: dist
         BUILD_SCRIPT: npm install && npm run build
