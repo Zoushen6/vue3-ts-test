@@ -13,7 +13,7 @@ module.exports = {
     lintOnSave: false,
     //不生产.map文件  .map文件可以在生产环境运行报错时准确输出哪一行那一列的错误
     productionSourceMap: false,
-    publicPath: '/vue3-ts-test/',
+    publicPath: process.env.NODE_ENV === "production" ? "/vue3-ts-test" : "/",
     //webpack配置
     devServer: {
         open: true,
