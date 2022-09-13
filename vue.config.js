@@ -34,6 +34,13 @@ module.exports = {
             },
         },
     },
+    // 修改 config/index.js，dist替换成docs，总共有两处
+    build: {
+        // index: path.resolve(__dirname, '../dist/index.html'),
+        // assetsRoot: path.resolve(__dirname, '../dist'),
+        index: path.resolve(__dirname, '../docs/index.html'),
+        assetsRoot: path.resolve(__dirname, '../docs'),
+    },
     css: {
         loaderOptions: {
             sass: {
