@@ -13,7 +13,7 @@ module.exports = {
     lintOnSave: false,
     //不生产.map文件  .map文件可以在生产环境运行报错时准确输出哪一行那一列的错误
     productionSourceMap: false,
-    publicPath: process.env.NODE_ENV === "production" ? "/vue3-ts-test" : "/",
+    publicPath: process.env.NODE_ENV === "production" ? "/vue3-ts-test/" : "/",
     //webpack配置
     devServer: {
         open: true,
@@ -33,13 +33,6 @@ module.exports = {
                 }
             },
         },
-    },
-    // 修改 config/index.js，dist替换成docs，总共有两处
-    build: {
-        // index: path.resolve(__dirname, '../dist/index.html'),
-        // assetsRoot: path.resolve(__dirname, '../dist'),
-        index: path.resolve(__dirname, '../docs/index.html'),
-        assetsRoot: path.resolve(__dirname, '../docs'),
     },
     css: {
         loaderOptions: {
