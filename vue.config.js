@@ -14,7 +14,7 @@ module.exports = {
     //不生产.map文件  .map文件可以在生产环境运行报错时准确输出哪一行那一列的错误
     productionSourceMap: false,
     outputDir: 'dist',
-    publicPath: process.env.NODE_ENV === "production" ? "/vue3-ts-test/" : "./",
+    publicPath: "./",
     //webpack配置
     devServer: {
         open: true,
