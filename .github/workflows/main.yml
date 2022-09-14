@@ -38,3 +38,4 @@ jobs:
           BRANCH: gh-pages
           # 要发布的文件夹
           FOLDER: dist
+          theme: minima
