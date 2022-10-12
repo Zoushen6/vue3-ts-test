@@ -2,7 +2,7 @@
   <div class="top-bar background-white">
     <div class="content">
       <div class="flex">
-        <router-link class="title" to="/" title="My Demo">My Demo</router-link>
+        <router-link class="title" to="/" title="My Demo">My Demo test</router-link>
         <Menu></Menu>
       </div>
       <div class="right-info flex">

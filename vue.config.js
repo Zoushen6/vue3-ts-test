@@ -15,6 +15,7 @@ module.exports = {
     productionSourceMap: false,
     outputDir: 'dist',
     publicPath: "./",
+    filenameHashing: true,
     //webpack配置
     devServer: {
         open: true,
