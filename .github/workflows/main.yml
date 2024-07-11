@@ -14,8 +14,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-    # 指定检查提交消息是否包含 '[auto]'
-    if: contains(github.event.head_commit.message, '[auto]')
 
     steps:
       # 步骤名
@@ -29,6 +27,8 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16
+          # npm依赖缓存
+          cache: 'npm'
       # 执行npm脚本打包项目
       - name: Install and Build
         run: |
