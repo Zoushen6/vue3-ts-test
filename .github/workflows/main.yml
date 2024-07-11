@@ -11,7 +11,9 @@ jobs:
   # build-and-deploy 为任务的ID
   build-and-deploy:
     # 运行所需要的环境
-    runs-on: ubuntu-latest 
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
 
     steps:
       # 步骤名
