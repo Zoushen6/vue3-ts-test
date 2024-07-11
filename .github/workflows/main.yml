@@ -21,7 +21,11 @@ jobs:
         # 这个为使用 JamesIves/github-pages-deploy-action脚本所需要的配置
         with:
           persist-credentials: false
-
+      - name: Set up Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'pnpm'
       # 执行npm脚本打包项目
       - name: Install and Build
         run: |
