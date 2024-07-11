@@ -29,6 +29,3 @@ npm run lint
 
 ### 在线预览
 [github-Action地址](https://zoushen6.github.io/vue3-ts-test/)
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
