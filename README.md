@@ -4,11 +4,12 @@
 ```
 v16.15.1
 
-cnpm i会报错
 ```
 
 ## Project setup
 ```
+cnpm i会报错
+
 npm install
 ```
 

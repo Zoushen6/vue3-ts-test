@@ -14,6 +14,8 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+    # 指定检查提交消息是否包含 '[auto]'
+    if: contains(github.event.head_commit.message, '[auto]')
 
     steps:
       # 步骤名
