@@ -13,7 +13,7 @@ jobs:
     # 运行所需要的环境
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write
 
     steps:
       # 步骤名
