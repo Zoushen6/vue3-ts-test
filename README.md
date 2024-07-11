@@ -1,4 +1,7 @@
+
 # vue3-ts-test
+[![Build And Deploy To Github Pages](https://github.com/Zoushen6/vue3-ts-test/actions/workflows/main.yml/badge.svg)](https://github.com/Zoushen6/vue3-ts-test/actions/workflows/main.yml)
+
 
 ## node版本
 ```
