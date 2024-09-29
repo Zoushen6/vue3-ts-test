@@ -1,5 +1,3 @@
-# git 提交代码token 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（30天有效，用于linux端提交代码） 
-
 # 使用 Node.js 官方镜像作为基础镜像
 FROM node:16.15.1 AS build
 
